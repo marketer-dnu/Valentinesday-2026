@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Jeyanthi Dhineshbabu ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;display:flex;justify-content:center;align-items:center;
+height:100vh;text-align:center;overflow:hidden;}
+.container{width:90%;max-width:420px;}
+.card{
+background: rgba(255,255,255,0.08);
+backdrop-filter: blur(15px);
+padding:30px 20px;border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);}
+h1{font-size:26px;margin-bottom:15px;}
+p{font-size:14px;opacity:0.9;margin-bottom:20px;}
+input{
+width:100%;padding:12px;border-radius:10px;border:none;
+margin-bottom:15px;outline:none;}
+button{
+width:100%;padding:12px;border:none;border-radius:30px;
+background:#ff4e91;color:white;font-weight:600;
+cursor:pointer;animation:pulse 1.5s infinite;}
+button:hover{background:#ff2e7a;}
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(255,78,145,0.7);}
+70%{box-shadow:0 0 0 15px rgba(255,78,145,0);}
+100%{box-shadow:0 0 0 0 rgba(255,78,145,0);}}
+.hidden{display:none;}
+.countdown{font-size:18px;margin-top:15px;font-weight:600;}
+.love-message{animation: fadeIn 2s ease-in-out;}
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}}
+@media(max-width:480px){h1{font-size:22px;}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="card" id="lockScreen">
+<h1>💖 Only For Jeyanthi 💖</h1>
+<p>This surprise unlocks at<br><strong>12:00 AM | February 14, 2026</strong></p>
+<div class="countdown" id="countdown"></div>
+<input type="password" id="password" placeholder="Enter Special Password">
+<button onclick="unlock()">Unlock My Heart</button>
+<p id="error" style="color:#ff8080;margin-top:10px;"></p>
+</div>
+
+<div class="card hidden love-message" id="loveScreen">
+<h1>Happy Valentine's Day Jeyanthi ❤️</h1>
+<p>
+என் வாழ்க்கையின் அழகான தொடக்கம் நீ... <br><br>
+நீ வந்த நாளிலிருந்து என் உலகம் நிறம் பெற்றது... <br> 
+உன் சிரிப்பு என் அமைதி...  <br>
+உன் அன்பு என் வாழ்வு...  
+<br><br>
+இந்த Valentine’s Day மட்டும் அல்ல...  
+என் வாழ்நாள் முழுவதும் உன்னோடு தான்...
+இனி எடுக்கும் அத்தனை ஜென்மங்களும் உன்னோடு தான்... 💍
+</p>
+<h2 style="margin-top:15px;">I Love You Forever 💖 My Love</h2>
+</div>
+</div>
+
+<script>
+const unlockDate = new Date("February 14, 2026 00:00:00").getTime();
+const countdownEl = document.getElementById("countdown");
+const lockScreen = document.getElementById("lockScreen");
+const loveScreen = document.getElementById("loveScreen");
+
+const interval = setInterval(function(){
+const now = new Date().getTime();
+const distance = unlockDate - now;
+
+if(distance <= 0){
+clearInterval(interval);
+countdownEl.innerHTML = "Time to Unlock ❤️";
+} else {
+const days = Math.floor(distance/(1000*60*60*24));
+const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds = Math.floor((distance%(1000*60))/1000);
+countdownEl.innerHTML = days+"d "+hours+"h "+minutes+"m "+seconds+"s";
+}
+},1000);
+
+function unlock(){
+const enteredPassword = document.getElementById("password").value;
+const now = new Date().getTime();
+
+if(now < unlockDate){
+document.getElementById("error").innerText = "⏳ Not yet my love... Wait till the day ❤️";
+return;
+}
+
+if(enteredPassword === "BTS"){
+lockScreen.classList.add("hidden");
+loveScreen.classList.remove("hidden");
+} else {
+document.getElementById("error").innerText = "Wrong Password ❤️ Try again";
+}
+}
+</script>
+</body>
+</html>
